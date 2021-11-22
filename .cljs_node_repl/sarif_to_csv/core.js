@@ -69,9 +69,8 @@ return sarif_to_csv.core.get_csv_line.call(null,p1__2245_SHARP_,properties_map);
 }),results_map)));
 });
 sarif_to_csv.core._main = (function sarif_to_csv$core$_main(){
-var core = sarif_to_csv.core.node$module$_CIRCA_actions$core.call(null);
-var input_filename = core.getInput("input-file");
-var output_filename = sarif_to_csv.core.github.getInput("output-file");
+var input_filename = sarif_to_csv.core.node$module$_CIRCA_actions$core.getInput("input-file");
+var output_filename = sarif_to_csv.core.node$module$_CIRCA_actions$core.getInput("output-file");
 var sarif_map = sarif_to_csv.core.read_sarif_as_map.call(null,input_filename);
 var csv_str = sarif_to_csv.core.get_csv.call(null,sarif_map);
 return cljs_node_io.core.spit.call(null,output_filename,csv_str);

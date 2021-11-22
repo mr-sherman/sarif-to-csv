@@ -2,7 +2,7 @@
   (:require 
             [cljs-node-io.core :as io :refer [slurp spit]]
             [clojure.string :as cs]
-            ["@actions/core" :as ac]
+            ["@actions/core" :as ac :refer [getInput]]
             ;["@actions/github" :as ag]
   )
 )
@@ -76,10 +76,10 @@
 
 (defn -main []
   (let [
-        core (ac)
+        ;core (ac)
         ;github (ag)
-        input-filename (. core getInput "input-file")
-        output-filename (. github getInput "output-file")
+        input-filename (getInput  "input-file")
+        output-filename (getInput "output-file")
         sarif-map (read-sarif-as-map input-filename)
         csv-str (get-csv sarif-map)
   ] (spit output-filename csv-str)
