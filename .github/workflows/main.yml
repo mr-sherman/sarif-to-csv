@@ -1,0 +1,15 @@
+on: [push]
+
+jobs:
+  sarif_to_csv:
+    runs-on: ubuntu-latest
+    name: test sarif to csv
+    steps:
+      - name: Convert sarif to csv
+        id: sarif-to-csv
+        uses: mr-sherman/sarif-t-csv@v1
+        with:
+          input-file: 'results.sarif'
+          output-file: 'results.csv'
+      
+      
