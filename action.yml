@@ -1,0 +1,17 @@
+name: 'SARIF-to-CSV'
+description: 'Create .csv files from sarif-formatted files'
+author: 'Brad Sherman (@mr-sherman)'
+
+inputs:
+  input-file:
+    description: 'sarif-formatted input file'
+    required: false
+    default: 'results.sarif'
+  output-file:
+    description: 'CSV-formatted output file'
+    required: false
+    default: 'results.csv'
+
+runs:
+  using: 'node12'
+  main: 'main.js'
