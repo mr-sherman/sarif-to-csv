@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Convert sarif to csv
         id: sarif-to-csv
-        uses: mr-sherman/sarif-t-csv@v1
+        uses: mr-sherman/sarif-to-csv@v1
         with:
           input-file: 'results.sarif'
           output-file: 'results.csv'
