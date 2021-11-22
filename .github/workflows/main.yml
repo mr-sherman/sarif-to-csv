@@ -5,9 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     name: test sarif to csv
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Convert sarif to csv
         id: sarif-to-csv
-        uses: mr-sherman/sarif-to-csv@v1
+        uses: ./
         with:
           input-file: 'results.sarif'
           output-file: 'results.csv'
