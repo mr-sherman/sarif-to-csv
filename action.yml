@@ -15,3 +15,4 @@ inputs:
 runs:
   using: 'node12'
   main: 'main.js'
+  working-directory: ${{ github.action_path }}
