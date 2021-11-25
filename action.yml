@@ -13,6 +13,6 @@ inputs:
     default: 'results.csv'
 
 runs:
-  using: 'node12'
+  using: 'node14'
   main: 'main.js'
   working-directory: ${{ github.action_path }}
