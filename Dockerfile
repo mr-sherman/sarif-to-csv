@@ -1,15 +1,16 @@
 FROM node:17
 
-COPY package*.json ./
-COPY src/ ./src/c
-COPY main.js ./
-COPY .cljs_node_repl/ ./.cljs_node_repl/
-COPY .clj-kondo/ ./.clj-kondo/
-COPY deps.edn ./
-COPY entrypoint.sh ./
+WORKDIR /app
+COPY package*.json /app/
+COPY src/ /app/src/
+COPY main.js /app/
+COPY .cljs_node_repl/ /app/.cljs_node_repl/
+COPY .clj-kondo/ /app/.clj-kondo/
+COPY deps.edn /app/
+COPY entrypoint.sh /app/
 
 RUN npm install
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
 
 
