@@ -13,6 +13,8 @@ inputs:
     default: 'results.csv'
 
 runs:
-  using: 'node14'
-  main: 'main.js'
-  working-directory: ${{ github.action_path }}
+  using: 'docker'
+  image: Dockerfile
+  args:
+    - ${{ inputs.input-file }}
+    - ${{ inputs.output-file }}
