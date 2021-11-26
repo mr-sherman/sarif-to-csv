@@ -1,3 +1,3 @@
 #!/bin/sh -l
 
-node /main.js $1 $2
+node /app/main.js $1 $2
