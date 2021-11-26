@@ -1,8 +1,7 @@
 (ns sarif-to-csv.core
   (:require 
             [cljs-node-io.core :as io :refer [slurp spit]]
-            [clojure.string :as cs]
-            ["@actions/core" :as ac :refer [getInput]]))
+            [clojure.string :as cs] ))
 
 (defn read-sarif [filename]
   (slurp filename))
@@ -59,9 +58,9 @@
            header ["NAME, SEVERITY, SCORE, TAGS, SOURCE"] ]
      (cs/join "\n" (into header   (map #(get-csv-line %1 properties-map) results-map)))))
 
-(defn -main []
-  (let [   input-filename (getInput  "input-file")
-           output-filename (getInput "output-file")
+(defn -main [& args]
+  (let [   input-filename (first args)
+           output-filename (second args)
            sarif-map (read-sarif-as-map input-filename)
            csv-str (get-csv sarif-map)] 
      (spit output-filename csv-str)))

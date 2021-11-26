@@ -3,7 +3,6 @@ goog.provide('sarif_to_csv.core');
 goog.require('cljs.core');
 goog.require('cljs_node_io.core');
 goog.require('clojure.string');
-sarif_to_csv.core.node$module$_CIRCA_actions$core = require('@actions/core');
 sarif_to_csv.core.read_sarif = (function sarif_to_csv$core$read_sarif(filename){
 return cljs_node_io.core.slurp.call(null,filename);
 });
@@ -68,13 +67,42 @@ return clojure.string.join.call(null,"\n",cljs.core.into.call(null,header,cljs.c
 return sarif_to_csv.core.get_csv_line.call(null,p1__2245_SHARP_,properties_map);
 }),results_map)));
 });
-sarif_to_csv.core._main = (function sarif_to_csv$core$_main(){
-var input_filename = sarif_to_csv.core.node$module$_CIRCA_actions$core.getInput("input-file");
-var output_filename = sarif_to_csv.core.node$module$_CIRCA_actions$core.getInput("output-file");
+sarif_to_csv.core._main = (function sarif_to_csv$core$_main(var_args){
+var args__4742__auto__ = [];
+var len__4736__auto___2247 = arguments.length;
+var i__4737__auto___2248 = (0);
+while(true){
+if((i__4737__auto___2248 < len__4736__auto___2247)){
+args__4742__auto__.push((arguments[i__4737__auto___2248]));
+
+var G__2249 = (i__4737__auto___2248 + (1));
+i__4737__auto___2248 = G__2249;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__4743__auto__ = ((((0) < args__4742__auto__.length))?(new cljs.core.IndexedSeq(args__4742__auto__.slice((0)),(0),null)):null);
+return sarif_to_csv.core._main.cljs$core$IFn$_invoke$arity$variadic(argseq__4743__auto__);
+});
+
+(sarif_to_csv.core._main.cljs$core$IFn$_invoke$arity$variadic = (function (args){
+var input_filename = cljs.core.first.call(null,args);
+var output_filename = cljs.core.second.call(null,args);
 var sarif_map = sarif_to_csv.core.read_sarif_as_map.call(null,input_filename);
 var csv_str = sarif_to_csv.core.get_csv.call(null,sarif_map);
 return cljs_node_io.core.spit.call(null,output_filename,csv_str);
-});
+}));
+
+(sarif_to_csv.core._main.cljs$lang$maxFixedArity = (0));
+
+/** @this {Function} */
+(sarif_to_csv.core._main.cljs$lang$applyTo = (function (seq2246){
+var self__4724__auto__ = this;
+return self__4724__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq2246));
+}));
+
 (cljs.core._STAR_main_cli_fn_STAR_ = sarif_to_csv.core._main);
 
 //# sourceMappingURL=core.js.map
