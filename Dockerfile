@@ -7,10 +7,10 @@ COPY main.js /github/workspace/
 COPY .cljs_node_repl/ /github/workspace/.cljs_node_repl/
 COPY .clj-kondo/ /github/workspace/.clj-kondo/
 COPY deps.edn /github/workspace/
-COPY entrypoint.sh /github/workspace/
+COPY entrypoint.sh /
 
 RUN npm install
 
-ENTRYPOINT ["/github/workspace/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 
 
