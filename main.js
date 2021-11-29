@@ -16,8 +16,8 @@ try {
     require("source-map-support").install();
 } catch(err) {
 }
-require(path.join(path.resolve("__dirname"),".cljs_node_repl","goog","bootstrap","nodejs.js"));
-require(path.join(path.resolve("__dirname"),".cljs_node_repl","cljs_deps.js"));
+require(path.join(path.resolve(__dirname),".cljs_node_repl","goog","bootstrap","nodejs.js"));
+require(path.join(path.resolve(__dirname),".cljs_node_repl","cljs_deps.js"));
 
 //require(path.join(path.resolve("."),".cljs_node_repl","goog","bootstrap","nodejs.js"));
 //require(path.join(path.resolve("."),".cljs_node_repl","cljs_deps.js"));
