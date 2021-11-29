@@ -16,7 +16,7 @@ The CSV file name.  Default:  `"results.csv"`.
 
 ## Example usage
 ```
-uses: mr-sherman/sarif-to-csv-action@v1
+uses: mr-sherman/sarif-to-csv-action@v2
 with:
   input-file: 'results.sarif'
   output-file: 'results.csv'
@@ -66,7 +66,7 @@ jobs:
         zip -r "$DATABASE_ZIP" "$DATABASE_DIR"
         echo "::set-output name=zip::$DATABASE_ZIP"
     - name: Extract CSV from SARIF
-      uses: mr-sherman/sarif-to-csv@main
+      uses: mr-sherman/sarif-to-csv@v2
       with:
          input-file: "/home/runner/work/repo-name/results/${{ matrix.language }}.sarif"
          output-file: "/home/runner/work/repo-name/results/${{ matrix.language }}.csv"
