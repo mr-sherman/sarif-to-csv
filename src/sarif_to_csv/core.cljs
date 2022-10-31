@@ -38,7 +38,7 @@
   (-> sarif-map :runs first :results))
 
 (defn source [result]
-  (-> result :locations first :physicalLocation :artificatLocation :uri))
+  (-> result :locations first :physicalLocation :artifactLocation :uri))
 
 (defn get-csv-line [result properties]
   (let [ id (keyword (result :ruleId))
