@@ -49,7 +49,7 @@ sarif_to_csv.core.get_results = (function sarif_to_csv$core$get_results(sarif_ma
 return new cljs.core.Keyword(null,"results","results",-1134170113).cljs$core$IFn$_invoke$arity$1(cljs.core.first.call(null,new cljs.core.Keyword(null,"runs","runs",-1553997798).cljs$core$IFn$_invoke$arity$1(sarif_map)));
 });
 sarif_to_csv.core.source = (function sarif_to_csv$core$source(result){
-return new cljs.core.Keyword(null,"uri","uri",-774711847).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"artificatLocation","artificatLocation",1062133304).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"physicalLocation","physicalLocation",1244378136).cljs$core$IFn$_invoke$arity$1(cljs.core.first.call(null,new cljs.core.Keyword(null,"locations","locations",-435476560).cljs$core$IFn$_invoke$arity$1(result)))));
+return new cljs.core.Keyword(null,"uri","uri",-774711847).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"artifactLocation","artifactLocation",-942743027).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"physicalLocation","physicalLocation",1244378136).cljs$core$IFn$_invoke$arity$1(cljs.core.first.call(null,new cljs.core.Keyword(null,"locations","locations",-435476560).cljs$core$IFn$_invoke$arity$1(result)))));
 });
 sarif_to_csv.core.get_csv_line = (function sarif_to_csv$core$get_csv_line(result,properties){
 var id = cljs.core.keyword.call(null,result.call(null,new cljs.core.Keyword(null,"ruleId","ruleId",-177430189)));

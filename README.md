@@ -68,8 +68,8 @@ jobs:
     - name: Extract CSV from SARIF
       uses: mr-sherman/sarif-to-csv@v2
       with:
-         input-file: "/home/runner/work/repo-name/results/${{ matrix.language }}.sarif"
-         output-file: "/home/runner/work/repo-name/results/${{ matrix.language }}.csv"
+         input-file: "/home/runner/work/${{ github.event.repository.name }}/results/${{ matrix.language }}.sarif"
+         output-file: "/home/runner/work/${{ github.event.repository.name }}/results/${{ matrix.language }}.csv"
     - name: Upload CodeQL database
       uses: actions/upload-artifact@v2
       with:
