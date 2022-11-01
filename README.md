@@ -66,7 +66,7 @@ jobs:
         zip -r "$DATABASE_ZIP" "$DATABASE_DIR"
         echo "::set-output name=zip::$DATABASE_ZIP"
     - name: Extract CSV from SARIF
-      uses: mr-sherman/sarif-to-csv@v2
+      uses: mr-sherman/sarif-to-csv@v2.1
       with:
          input-file: "/home/runner/work/${{ github.event.repository.name }}/results/${{ matrix.language }}.sarif"
          output-file: "/home/runner/work/${{ github.event.repository.name }}/results/${{ matrix.language }}.csv"
