@@ -21,7 +21,7 @@ var properties = new cljs.core.Keyword(null,"properties","properties",685819552)
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.keyword.call(null,id),properties], null);
 });
 sarif_to_csv.core.get_properties_map = (function sarif_to_csv$core$get_properties_map(sarif_map){
-var rules = new cljs.core.Keyword(null,"rules","rules",1198912366).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"driver","driver",1515263546).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"tool","tool",-1298696470).cljs$core$IFn$_invoke$arity$1(cljs.core.first.call(null,new cljs.core.Keyword(null,"runs","runs",-1553997798).cljs$core$IFn$_invoke$arity$1(sarif_map)))));
+var rules = cljs.core.remove.call(null,cljs.core.nil_QMARK_,cljs.core.flatten.call(null,cljs.core.into.call(null,new cljs.core.Keyword(null,"rules","rules",1198912366).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"driver","driver",1515263546).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"tool","tool",-1298696470).cljs$core$IFn$_invoke$arity$1(cljs.core.first.call(null,new cljs.core.Keyword(null,"runs","runs",-1553997798).cljs$core$IFn$_invoke$arity$1(sarif_map))))),cljs.core.map.call(null,new cljs.core.Keyword(null,"rules","rules",1198912366),new cljs.core.Keyword(null,"extensions","extensions",-1103629196).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"tool","tool",-1298696470).cljs$core$IFn$_invoke$arity$1(cljs.core.first.call(null,new cljs.core.Keyword(null,"runs","runs",-1553997798).cljs$core$IFn$_invoke$arity$1(sarif_map))))))));
 var tuples = cljs.core.map.call(null,sarif_to_csv.core.get_properties_tuple,rules);
 return cljs.core.into.call(null,cljs.core.PersistentArrayMap.EMPTY,tuples);
 });

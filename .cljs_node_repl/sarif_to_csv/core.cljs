@@ -22,8 +22,10 @@
     [(keyword id) properties]))
 
 (defn get-properties-map [sarif-map]
-  (let [  rules (-> sarif-map :runs first :tool :driver :rules)
-          tuples (map get-properties-tuple rules)]
+  (let [rules (remove nil?
+                      (flatten (into (-> sarif-map :runs first :tool :driver :rules) 
+                                     (map :rules (-> sarif-map :runs first :tool :extensions)))))
+        tuples (map get-properties-tuple rules)]
     (into {} tuples)))
 
 (defn get-security-severity-string [x]
