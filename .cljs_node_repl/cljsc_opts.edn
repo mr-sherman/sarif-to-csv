@@ -1,1 +1,1 @@
-{:output-dir ".cljs_node_repl", :target :nodejs, :output-to "main.js", :main sarif-to-csv.core, :aot-cache true}
+{:output-dir ".cljs_node_repl", :target :nodejs, :output-to "main.js", :main sarif_to_csv.core, :aot-cache true}

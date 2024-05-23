@@ -41,24 +41,28 @@
 
 (defn source [result]
   (-> result :locations first :physicalLocation :artifactLocation :uri))
+(defn line-number [result]
+  (-> result :locations :region :startLine))
 
 (defn get-csv-line [result properties]
   (let [ id (keyword (result :ruleId))
-         name (-> properties id :name)
-         severity-score (-> properties id :security-severity)
-         severity-string (get-security-severity-string severity-score)
-         tags  (-> properties id :tags)
-         vuln-source (source result) ]
+        name (-> properties id :name)
+        severity-score (-> properties id :security-severity)
+        severity-string (get-security-severity-string severity-score)
+        tags  (-> properties id :tags)
+        vuln-source (source result) 
+        line  (line-number result)]
      (str name ","
-      severity-string ","
-      severity-score ","
-      tags ","
-      vuln-source )))
+          severity-string ","
+          severity-score ","
+          tags ","
+          vuln-source ","
+          line)))
 
 (defn get-csv [sarif-map]
   (let [   properties-map (get-properties-map sarif-map)
            results-map (get-results sarif-map)
-           header ["NAME, SEVERITY, SCORE, TAGS, SOURCE"] ]
+           header ["NAME, SEVERITY, SCORE, TAGS, SOURCE, LINE NUMBER"] ]
      (cs/join "\n" (into header   (map #(get-csv-line %1 properties-map) results-map)))))
 
 (defn -main []

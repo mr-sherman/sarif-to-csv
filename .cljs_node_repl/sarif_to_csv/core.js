@@ -51,6 +51,9 @@ return new cljs.core.Keyword(null,"results","results",-1134170113).cljs$core$IFn
 sarif_to_csv.core.source = (function sarif_to_csv$core$source(result){
 return new cljs.core.Keyword(null,"uri","uri",-774711847).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"artifactLocation","artifactLocation",-942743027).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"physicalLocation","physicalLocation",1244378136).cljs$core$IFn$_invoke$arity$1(cljs.core.first.call(null,new cljs.core.Keyword(null,"locations","locations",-435476560).cljs$core$IFn$_invoke$arity$1(result)))));
 });
+sarif_to_csv.core.line_number = (function sarif_to_csv$core$line_number(result){
+return new cljs.core.Keyword(null,"startLine","startLine",-310241693).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"region","region",270415120).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"locations","locations",-435476560).cljs$core$IFn$_invoke$arity$1(result)));
+});
 sarif_to_csv.core.get_csv_line = (function sarif_to_csv$core$get_csv_line(result,properties){
 var id = cljs.core.keyword.call(null,result.call(null,new cljs.core.Keyword(null,"ruleId","ruleId",-177430189)));
 var name = new cljs.core.Keyword(null,"name","name",1843675177).cljs$core$IFn$_invoke$arity$1(id.call(null,properties));
@@ -58,12 +61,13 @@ var severity_score = new cljs.core.Keyword(null,"security-severity","security-se
 var severity_string = sarif_to_csv.core.get_security_severity_string.call(null,severity_score);
 var tags = new cljs.core.Keyword(null,"tags","tags",1771418977).cljs$core$IFn$_invoke$arity$1(id.call(null,properties));
 var vuln_source = sarif_to_csv.core.source.call(null,result);
-return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(name),",",severity_string,",",cljs.core.str.cljs$core$IFn$_invoke$arity$1(severity_score),",",cljs.core.str.cljs$core$IFn$_invoke$arity$1(tags),",",cljs.core.str.cljs$core$IFn$_invoke$arity$1(vuln_source)].join('');
+var line = sarif_to_csv.core.line_number.call(null,result);
+return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(name),",",severity_string,",",cljs.core.str.cljs$core$IFn$_invoke$arity$1(severity_score),",",cljs.core.str.cljs$core$IFn$_invoke$arity$1(tags),",",cljs.core.str.cljs$core$IFn$_invoke$arity$1(vuln_source),",",cljs.core.str.cljs$core$IFn$_invoke$arity$1(line)].join('');
 });
 sarif_to_csv.core.get_csv = (function sarif_to_csv$core$get_csv(sarif_map){
 var properties_map = sarif_to_csv.core.get_properties_map.call(null,sarif_map);
 var results_map = sarif_to_csv.core.get_results.call(null,sarif_map);
-var header = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["NAME, SEVERITY, SCORE, TAGS, SOURCE"], null);
+var header = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["NAME, SEVERITY, SCORE, TAGS, SOURCE, LINE NUMBER"], null);
 return clojure.string.join.call(null,"\n",cljs.core.into.call(null,header,cljs.core.map.call(null,(function (p1__2245_SHARP_){
 return sarif_to_csv.core.get_csv_line.call(null,p1__2245_SHARP_,properties_map);
 }),results_map)));
