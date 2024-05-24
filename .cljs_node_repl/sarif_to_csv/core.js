@@ -54,6 +54,12 @@ return new cljs.core.Keyword(null,"uri","uri",-774711847).cljs$core$IFn$_invoke$
 sarif_to_csv.core.line_number = (function sarif_to_csv$core$line_number(result){
 return new cljs.core.Keyword(null,"startLine","startLine",-310241693).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"region","region",270415120).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"locations","locations",-435476560).cljs$core$IFn$_invoke$arity$1(result)));
 });
+sarif_to_csv.core.start_column = (function sarif_to_csv$core$start_column(result){
+return new cljs.core.Keyword(null,"startColumn","startColumn",199206784).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"region","region",270415120).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"locations","locations",-435476560).cljs$core$IFn$_invoke$arity$1(result)));
+});
+sarif_to_csv.core.end_column = (function sarif_to_csv$core$end_column(result){
+return new cljs.core.Keyword(null,"endColumn","endColumn",-26664214).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"region","region",270415120).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"locations","locations",-435476560).cljs$core$IFn$_invoke$arity$1(result)));
+});
 sarif_to_csv.core.get_csv_line = (function sarif_to_csv$core$get_csv_line(result,properties){
 var id = cljs.core.keyword.call(null,result.call(null,new cljs.core.Keyword(null,"ruleId","ruleId",-177430189)));
 var name = new cljs.core.Keyword(null,"name","name",1843675177).cljs$core$IFn$_invoke$arity$1(id.call(null,properties));
@@ -62,12 +68,14 @@ var severity_string = sarif_to_csv.core.get_security_severity_string.call(null,s
 var tags = new cljs.core.Keyword(null,"tags","tags",1771418977).cljs$core$IFn$_invoke$arity$1(id.call(null,properties));
 var vuln_source = sarif_to_csv.core.source.call(null,result);
 var line = sarif_to_csv.core.line_number.call(null,result);
-return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(name),",",severity_string,",",cljs.core.str.cljs$core$IFn$_invoke$arity$1(severity_score),",",cljs.core.str.cljs$core$IFn$_invoke$arity$1(tags),",",cljs.core.str.cljs$core$IFn$_invoke$arity$1(vuln_source),",",cljs.core.str.cljs$core$IFn$_invoke$arity$1(line)].join('');
+var start = sarif_to_csv.core.start_column.call(null,result);
+var end = sarif_to_csv.core.end_column.call(null,result);
+return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(name),",",severity_string,",",cljs.core.str.cljs$core$IFn$_invoke$arity$1(severity_score),",",cljs.core.str.cljs$core$IFn$_invoke$arity$1(tags),",",cljs.core.str.cljs$core$IFn$_invoke$arity$1(vuln_source),",",cljs.core.str.cljs$core$IFn$_invoke$arity$1(line),",",cljs.core.str.cljs$core$IFn$_invoke$arity$1(start),",",cljs.core.str.cljs$core$IFn$_invoke$arity$1(end)].join('');
 });
 sarif_to_csv.core.get_csv = (function sarif_to_csv$core$get_csv(sarif_map){
 var properties_map = sarif_to_csv.core.get_properties_map.call(null,sarif_map);
 var results_map = sarif_to_csv.core.get_results.call(null,sarif_map);
-var header = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["NAME, SEVERITY, SCORE, TAGS, SOURCE, LINE NUMBER"], null);
+var header = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["NAME, SEVERITY, SCORE, TAGS, SOURCE, START LINE, START COLUMN, END COLUMN"], null);
 return clojure.string.join.call(null,"\n",cljs.core.into.call(null,header,cljs.core.map.call(null,(function (p1__2245_SHARP_){
 return sarif_to_csv.core.get_csv_line.call(null,p1__2245_SHARP_,properties_map);
 }),results_map)));
