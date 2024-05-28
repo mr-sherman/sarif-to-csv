@@ -42,11 +42,11 @@
 (defn source [result]
   (-> result :locations first :physicalLocation :artifactLocation :uri))
 (defn line-number [result]
-  (-> result :locations :region :startLine))
+  (-> result :locations first :region :startLine))
 (defn start-column [result]
-  (-> result :locations :region :startColumn))
+  (-> result :locations first :region :startColumn))
 (defn end-column [result]
-  (-> result :locations :region :endColumn))
+  (-> result :locations first :region :endColumn))
 
 (defn get-csv-line [result properties]
   (let [ id (keyword (result :ruleId))
