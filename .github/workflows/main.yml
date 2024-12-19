@@ -16,7 +16,7 @@ jobs:
           input-file: 'test/results.sarif'
           output-file: 'results.csv'
       - name: Upload CSV
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: 'results.csv'
           path: 'results.csv'
