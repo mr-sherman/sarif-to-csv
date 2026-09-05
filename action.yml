@@ -13,5 +13,15 @@ inputs:
     default: 'results.csv'
 
 runs:
-  using: 'node16'
-  main: 'main.js'
+  using: 'composite'
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Convert SARIF to CSV
+      shell: bash
+      run: |
+        python3 "${{ github.action_path }}/main.py" \
+          --input-file "${{ inputs.input-file }}" \
+          --output-file "${{ inputs.output-file }}"

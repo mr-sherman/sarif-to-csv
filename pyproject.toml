@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sarif-to-csv"
+version = "3.0.0"
+description = "Create .csv files from sarif-formatted files"
+readme = "README.md"
+authors = [{ name = "Brad Sherman", email = "bradford.sherman@unisys.com" }]
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+sarif-to-csv = "sarif_to_csv.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+include = ["sarif_to_csv*"]
