@@ -1,6 +1,16 @@
 # SARIF to CSV GitHub Action
 
-This action creates csv report from SARIF files.  This action will help you generate CSV reports for recently run static analysis scans or other security scans that output to the SARIF format. 
+This action creates csv report from SARIF files.  This action will help you generate CSV reports for recently run static analysis scans or other security scans that output to the SARIF format.
+
+As of `v3`, this action is implemented in Python instead of ClojureScript. Inputs, outputs, and CSV
+column names are unchanged, so upgrading from `v2` only requires bumping the version tag.
+
+## Running locally
+
+```
+pip install .
+sarif-to-csv --input-file results.sarif --output-file results.csv
+```
 
 ## Inputs
 
@@ -16,7 +26,7 @@ The CSV file name.  Default:  `"results.csv"`.
 
 ## Example usage
 ```
-uses: mr-sherman/sarif-to-csv-action@v2
+uses: mr-sherman/sarif-to-csv-action@v3
 with:
   input-file: 'results.sarif'
   output-file: 'results.csv'
@@ -66,7 +76,7 @@ jobs:
         zip -r "$DATABASE_ZIP" "$DATABASE_DIR"
         echo "::set-output name=zip::$DATABASE_ZIP"
     - name: Extract CSV from SARIF
-      uses: mr-sherman/sarif-to-csv@v2.1
+      uses: mr-sherman/sarif-to-csv@v3
       with:
          input-file: "/home/runner/work/${{ github.event.repository.name }}/results/${{ matrix.language }}.sarif"
          output-file: "/home/runner/work/${{ github.event.repository.name }}/results/${{ matrix.language }}.csv"

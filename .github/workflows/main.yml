@@ -1,14 +1,30 @@
-on: 
+on:
   push:
+  pull_request:
   workflow_dispatch:
 
 jobs:
+  unit_tests:
+    runs-on: ubuntu-latest
+    name: unit tests
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install package
+        run: pip install -e ".[dev]"
+      - name: Run tests
+        run: pytest
+
   sarif_to_csv:
     runs-on: ubuntu-latest
     name: test sarif to csv
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Convert sarif to csv
         id: sarif-to-csv
         uses: ./
@@ -20,4 +36,4 @@ jobs:
         with:
           name: 'results.csv'
           path: 'results.csv'
-      
+
